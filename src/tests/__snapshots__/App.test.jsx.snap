@@ -1,0 +1,44 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`App component > renders correctly 1`] = `
+<div>
+  <header
+    class="flex space-between"
+    id="header"
+  >
+    <a
+      data-discover="true"
+      href="/"
+    >
+      <h1
+        class="title"
+      >
+        ShopIt
+      </h1>
+    </a>
+    <a
+      class="inner-link"
+      data-discover="true"
+      href="/shop"
+    >
+      Products
+    </a>
+    <a
+      data-discover="true"
+      href="/cart"
+    >
+      <div
+        id="cart"
+      >
+        <img
+          alt="cart"
+          src="../assets/shopping_cart.png"
+        />
+        <div
+          class="cart-counter"
+        />
+      </div>
+    </a>
+  </header>
+</div>
+`;

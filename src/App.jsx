@@ -1,119 +1,71 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import Header from './components/Header';
 import './App.css'
+import { useEffect, useState } from 'react';
+import { Outlet } from 'react-router';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [cartCounter, setCartCounter] = useState(0);
+  const [cart, setCart] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [productsLoading, setProductsLoading] = useState(true);
+  const [productsError, setProductsError] = useState(null);
+
+  useEffect(() => {
+      fetch("https://fakestoreapi.com/products")
+      .then((response) => {
+          if (response.status >= 400) {
+              throw new Error("server error");
+          }
+          return response.json();
+      })
+      .then((response) => setProducts(response))
+      .catch((error) => {
+        setProductsError(error.message || "Could not load products");
+        console.error(error);
+      })
+      .finally(() => setProductsLoading(false));
+  }, []);
+
+  function onAddToCart(data, count) {
+    const id = data.id;
+    const idx = cart.findIndex(p => p.data.id === id);
+    const previousCount = cart[idx] ? cart[idx].count : 0;
+
+    if (idx !== -1) {
+      const newCart = cart.slice();
+      newCart[idx].count = previousCount + count;
+      setCart(newCart);
+    } else {
+      const newCart = cart.slice();
+      newCart.push({ data, count });
+      setCart(newCart);
+    }
+    
+    setCartCounter(prev => prev + count);
+  }
+
+  function onProductQuantityChange(id, change) {
+    const idx = cart.findIndex(p => p.data.id === id);
+    const currCount = cart[idx].count;
+    const newCount = currCount + change;
+
+    if (newCount === 0) {
+      const newCart = cart.slice();
+      newCart.splice(idx, 1);
+      setCart(newCart);
+    } else {
+      const newCart = cart.slice();
+      newCart[idx].count += change;
+      setCart(newCart);
+    }
+
+    setCartCounter(prev => prev + change);
+  }
 
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+      <Header cartCounter={cartCounter}></Header>
+      <Outlet context={{ onAddToCart, products, productsLoading, productsError, onProductQuantityChange, cart }}></Outlet>
     </>
   )
 }

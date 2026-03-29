@@ -54,7 +54,30 @@ exports[`Shop component > renders correctly 1`] = `
         data-discover="true"
         href="/product/1"
       >
-        Keyboard
+        <div
+          class="product flex flex-column"
+        >
+          <img
+            alt="Keyboard"
+            class="product-image"
+            src="keyboard.png"
+          />
+          <div
+            class="product-info flex flex-column"
+          >
+            <span
+              class="product-price"
+            >
+              49.99
+               €
+            </span>
+            <span
+              class="product-name"
+            >
+              Keyboard
+            </span>
+          </div>
+        </div>
       </a>
     </div>
   </main>

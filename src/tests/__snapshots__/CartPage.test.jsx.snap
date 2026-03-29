@@ -1,0 +1,87 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CartPage component > renders correctly 1`] = `
+<div>
+  <header
+    class="flex space-between"
+    id="header"
+  >
+    <a
+      data-discover="true"
+      href="/"
+    >
+      <h1
+        class="title"
+      >
+        ShopIt
+      </h1>
+    </a>
+    <a
+      class="products-link"
+      data-discover="true"
+      href="/shop"
+    >
+      Products
+    </a>
+    <a
+      data-discover="true"
+      href="/cart"
+    >
+      <div
+        id="cart"
+      >
+        <img
+          alt="cart"
+          src="/src/assets/shopping_cart.png"
+        />
+        <div
+          class="cart-counter"
+        >
+          1
+        </div>
+      </div>
+    </a>
+  </header>
+  <main>
+    <div
+      class="product-list"
+    >
+      <div
+        class="item flex"
+      >
+        <div
+          class="product-name"
+        >
+          Keyboard
+        </div>
+        <div
+          class="product-price"
+        >
+          49.99
+        </div>
+        <div
+          class="product-count-handler"
+        >
+          <button>
+            -
+          </button>
+          <div
+            class="product-count"
+            data-testid="count"
+          >
+            1
+          </div>
+          <button>
+            +
+          </button>
+        </div>
+      </div>
+    </div>
+    <button
+      id="checkout"
+    >
+      Checkout
+    </button>
+  </main>
+</div>
+`;

@@ -1,0 +1,12 @@
+.main {
+    height: calc(100% - 75px);
+    gap: 8px;
+}
+
+.title {
+    font-size: 4rem;
+}
+
+.main > span {
+    margin-bottom: 24px;
+}

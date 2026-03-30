@@ -3,8 +3,13 @@
     background-color: var(--brand-orange);
 }
 
+#header > * {
+    flex: 1;
+}
+
 .products-link {
     font-size: 1.1rem;
+    text-align: center;
 }
 
 .products-link:hover {
@@ -18,4 +23,8 @@
 #cart > img {
     width: 28px;
     height: auto;
+}
+
+.cart-link {
+    justify-items: end;
 }

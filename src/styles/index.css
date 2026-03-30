@@ -14,12 +14,22 @@ html, body {
   height: 100%;
 }
 
+#root {
+  height: 100%;
+  min-height: 500px;
+}
+
 .flex {
   display: flex;
 }
 
 .flex-column {
   flex-direction: column;
+}
+
+.item-center {
+  justify-content: center;
+  align-items: center;
 }
 
 .space-between {
@@ -36,4 +46,15 @@ html, body {
 
 a {
   text-decoration: none;
+}
+
+.button-link {
+  padding: 8px 24px;
+  background-color: var(--brand-orange);
+  border-radius: 20px;
+  transition: filter 0.3s;
+}
+
+.button-link:hover {
+  filter: brightness(0.9);
 }

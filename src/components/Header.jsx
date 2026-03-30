@@ -13,12 +13,12 @@ function Cart({ cartCounter }) {
 
 export default function Header({ cartCounter }) {
     return (
-        <header id={styles.header} className='flex space-between align-center'>
+        <header id={styles.header} className='flex align-center'>
             <Link to="/">
                 <h1>Shop It</h1>
             </Link>
             <Link to="shop" className={styles.productsLink}>Products</Link>
-            <Link to="cart">
+            <Link to="cart" className={styles.cartLink}>
                 <Cart cartCounter={cartCounter}></Cart>
             </Link>
         </header>

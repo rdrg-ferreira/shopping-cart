@@ -1,6 +1,6 @@
 #header {
     padding: 16px 32px;
-    background-color: orange;
+    background-color: var(--brand-orange);
 }
 
 .products-link {

@@ -1,0 +1,51 @@
+.main {
+    padding: 36px 60px;
+}
+
+.main > h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#products-list {
+    padding: 0 160px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: min-content;
+    gap: 48px;
+}
+
+.card {
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 12px;
+    gap: 12px;
+}
+
+.product-image {
+    object-fit: contain;
+    min-height: 60%;
+    max-height: 60%;
+    padding: 16px;
+}
+
+.product-info {
+    border-top: 1px solid black;
+    padding: 16px;
+    gap: 4px;
+    height: calc(40% - 16px);
+}
+
+.product-price {
+    font-size: 0.9rem;
+    color: gray;
+}
+
+.product-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+}

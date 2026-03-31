@@ -53,6 +53,7 @@ a {
   background-color: var(--brand-orange);
   border-radius: 20px;
   transition: filter 0.3s;
+  border: none;
 }
 
 .button-link:hover {

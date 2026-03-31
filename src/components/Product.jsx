@@ -1,15 +1,16 @@
 import { useMemo, useState } from "react";
 import { useOutletContext, useParams } from "react-router";
+import styles from '../styles/Product.module.css';
 
 function AddToCart({ count, incrementCount, decrementCount, onAddToCart, data }) {
     return (
-        <div className="cart-options flex">
-            <div className="product-count-handler">
+        <div className={`${styles.cartOptions} flex`}>
+            <div className={`${styles.productCountHandler} flex align-center`}>
                 <button onClick={decrementCount}>-</button>
-                <div className="product-count">{count}</div>
+                <div className={styles.productCount}>{count}</div>
                 <button onClick={incrementCount}>+</button>
             </div>
-            <button className="add-product" onClick={() => onAddToCart(data, count)}>Add to cart</button>
+            <button className="button-link" onClick={() => onAddToCart(data, count)}>Add to cart</button>
         </div>
     );
 }
@@ -46,12 +47,12 @@ export default function Product() {
 
     return (
         <>
-            <main className="flex">
-                <img src={product.image} alt={product.title.toLowerCase()} className="product-img" />
-                <div className="product-info flex flex-column">
+            <main className="grid align-center">
+                <img src={product.image} alt={product.title.toLowerCase()} className={styles.productImg} />
+                <div className={`${styles.productInfo} flex flex-column`}>
                     <h1 className="product-name">{product.title}</h1>
-                    <div className="product-description">{product.description}</div>
-                    <div className="product-price">{product.price}</div>
+                    <div className={styles.productDescription}>{product.description}</div>
+                    <div className={styles.productPrice}>{product.price} €</div>
                     <AddToCart
                         count={count}
                         incrementCount={incrementCount}

@@ -1,0 +1,47 @@
+main {
+    padding: 120px 160px;
+    gap: 60px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.product-img {
+    width: 360px;
+    height: auto;
+    justify-self: right;
+}
+
+.product-info {
+    gap: 12px;
+    max-width: 600px;
+}
+
+.product-price {
+    margin-top: 24px;
+    font-size: 1.5rem;
+}
+
+.product-description {
+    max-width: 600px;
+}
+
+.cart-options {
+    gap: 12px;
+}
+
+.product-count-handler {
+    gap: 8px;
+    background-color: black;
+    padding: 8px;
+    border-radius: 20px;
+}
+
+.product-count-handler > button {
+    color: white;
+    background-color: inherit;
+    border: none;
+    padding: 4px 8px;
+}
+
+.product-count {
+    color: white;
+}

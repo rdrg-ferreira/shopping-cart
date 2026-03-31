@@ -17,7 +17,7 @@ export default function Shop() {
     const context = useOutletContext();
 
     return (
-        context.productsError !== null ? (
+        (context.productsError !== null && context.products.length === 0) ? (
             <main className={styles.main}>
                 <h1 className={styles.fetchError}>{context.productsError}</h1>
             </main>

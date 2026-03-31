@@ -37,7 +37,7 @@ export default function Product() {
         return <main>Loading product...</main>;
     }
 
-    if (context.productsError) {
+    if (context.productsError !== context.products.length === 0) {
         return <main>{context.productsError}</main>;
     }
 

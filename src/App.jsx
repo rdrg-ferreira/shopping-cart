@@ -1,7 +1,7 @@
 import Header from './components/Header';
-import './App.css'
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router';
+import testData from './testData';
 
 function App() {
   const [cartCounter, setCartCounter] = useState(0);
@@ -22,6 +22,7 @@ function App() {
       .catch((error) => {
         setProductsError(error.message || "Could not load products");
         console.error(error);
+        setProducts([testData]);
       })
       .finally(() => setProductsLoading(false));
   }, []);

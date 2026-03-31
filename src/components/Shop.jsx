@@ -17,15 +17,21 @@ export default function Shop() {
     const context = useOutletContext();
 
     return (
-        <>
+        context.productsError !== null ? (
             <main className={styles.main}>
-                <h1>Our products</h1>
-                <div id={styles.productsList} className='grid'>
-                    {context.products.map(p => {
-                        return <ProductItem key={p.id} id={p.id} name={p.title} image={p.image} price={p.price}></ProductItem>
-                    })}
-                </div>
+                <h1 className={styles.fetchError}>{context.productsError}</h1>
             </main>
-        </>
+        ) : (
+            <>
+                <main className={styles.main}>
+                    <h1>Our products</h1>
+                    <div id={styles.productsList} className='grid'>
+                        {context.products.map(p => {
+                            return <ProductItem key={p.id} id={p.id} name={p.title} image={p.image} price={p.price}></ProductItem>
+                        })}
+                    </div>
+                </main>
+            </>
+        )
     );
 }

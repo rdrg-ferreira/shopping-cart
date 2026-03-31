@@ -9,7 +9,7 @@ const ViteConfigInput = {
 // https://vite.dev/config/
 export default (args) => {
   const generateScopedName = args.mode === "production"
-  ? "[local]" : "[local]_[hash:base64:2]";
+  ? "[local]_[hash:base64:6]" : "[local]_[hash:base64:2]";
 
   return defineConfig({
     plugins: [react()],

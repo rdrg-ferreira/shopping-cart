@@ -6,8 +6,7 @@ export default function CartPage() {
 
     const productTotalPrice = (p) => {
         const price = p.data.price;
-        const floatPrice = parseFloat(price.split(",").join("."));
-        const floatTotalPrice = floatPrice * parseInt(p.count);
+        const floatTotalPrice = price * parseInt(p.count);
         return floatTotalPrice;
     }
 
@@ -25,14 +24,12 @@ export default function CartPage() {
             <main className={`flex ${styles.cartPage} item-center`}>
                 <div className={`${styles.productList} flex flex-column`}>
                     {context.cart.map(p => {
-                        
-                        
                         return (
                             <div className={`${styles.item} flex space-between`} key={p.data.id}>
                                 <div className="flex flex-column">
                                     <div className={styles.productName}>{p.data.title}</div>
                                     <div className="flex" style={{"gap": "4px", }}>
-                                        <div className="product-price">{p.data.price} € each</div>
+                                        <div className="product-price">{p.data.price.toFixed(2).split(".").join(",")} € each</div>
                                         <div className="product-total-price">{`(Subtotal: ${productTotalPrice(p).toFixed(2).split(".").join(",")} €)`}</div>
                                     </div>
                                 </div>

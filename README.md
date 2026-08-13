@@ -19,7 +19,7 @@ It uses the [Fetch API][fetch-api-url] to get product data from [Fake Store API]
 Follow these steps to get a local copy of the project up and running.
 
 ### Prerequisites
-* [NodeJs & npm][node-npm-install-guide] (Latest LTS version)
+* [NodeJs & npm][node-npm-install-guide] (Node v22.x or higher & npm v10.x or higher)
 
 ### Installation
 1. Clone the repo

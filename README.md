@@ -6,7 +6,7 @@ An online shop mockup built on React that fetches data from [Fake Store API][fak
 
 ## Overview
 
-This app allows users to explore all the items of the shop, add them to their cart, a edit it if needed however they want.
+This app allows users to explore all the items of the shop, add them to their cart, and edit it if needed however they want.
 It uses the [Fetch API][fetch-api-url] to get product data from [Fake Store API][fake-stor-api-url], and uses [React Router][react-router-url] to eliminate the need of routing to multiple HTML files.
 
 ### Built With
